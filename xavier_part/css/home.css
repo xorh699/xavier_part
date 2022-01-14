@@ -1,0 +1,22 @@
+﻿body {
+}
+.card {
+    
+    text-align:center ;
+}
+#Image1 {
+   
+}
+.header {
+    padding: 60px;
+    text-align: center;
+    background: pink;
+    color: black;
+    font-size: 30px;
+    margin-bottom:40px;
+   
+}
+.header a {
+    text-decoration: underline;
+    
+}
