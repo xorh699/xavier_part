@@ -18,5 +18,6 @@
             Product Image<<asp:Label ID="lbl_Result" runat="server" Text="Label"></asp:Label>>
             <asp:FileUpload ID="FileUpload1" runat="server" />
             <br />
+            Supplier Name
             <asp:Button ID="btn_Insert" runat="server" OnClick="btn_Insert_Click" Text="Insert" />
 </asp:Content>

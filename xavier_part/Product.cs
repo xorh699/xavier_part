@@ -18,7 +18,8 @@ namespace xavier_part
         private decimal _unitPrice = 0;
         private string _prodImage = "";
         private int _stockLevel = 0;
-
+        private string _supplName = "";
+        private string _supplEmail = "";
         // Default constructor
         public Product()
         {
@@ -26,7 +27,7 @@ namespace xavier_part
 
         // Constructor that take in all data required to build a Product object
         public Product(string prodID, string prodName, string prodDesc,
-                       decimal unitPrice, string prodImage, int stockLevel)
+                       decimal unitPrice, string prodImage, int stockLevel, string supplName,string supplEmail)
         {
             _prodID = prodID;
             _prodName = prodName;
@@ -34,18 +35,19 @@ namespace xavier_part
             _unitPrice = unitPrice;
             _prodImage = prodImage;
             _stockLevel = stockLevel;
+            _supplName = supplEmail;
         }
 
         // Constructor that take in all except product ID
         public Product(string prodName, string prodDesc,
-               decimal unitPrice, string prodImage, int stockLevel)
-            : this(null, prodName, prodDesc, unitPrice, prodImage, stockLevel)
+               decimal unitPrice, string prodImage, int stockLevel,string supplName,string supplEmail)
+            : this(null, prodName, prodDesc, unitPrice, prodImage, stockLevel,supplName,supplEmail)
         {
         }
 
         // Constructor that take in only Product ID. The other attributes will be set to 0 or empty.
         public Product(string prodID)
-            : this(prodID, "", "", 0, "", 0)
+            : this(prodID, "", "", 0, "", 0,"","")
         {
         }
 
@@ -81,6 +83,25 @@ namespace xavier_part
         {
             get { return _stockLevel; }
             set { _stockLevel = value; }
+        }
+        public string Supplier_Name
+        {
+            get
+            {
+                return _supplName;
+            }
+            set
+            {
+                _supplName = value;
+            }
+
+        }
+        public string Supplier_Email
+        {
+            get { return _supplEmail; }
+            set {
+                _supplEmail = value;
+                    }
         }
         public int ProductInsert()
         {

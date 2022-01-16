@@ -8,13 +8,20 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using PayPal.Api;
+using Stripe.Checkout;
+using Stripe;
+
 namespace xavier_part
 {
     public partial class checkoutoverview : System.Web.UI.Page
     {
+        public string sessionId = "";
+
         SqlConnection knn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\Documents\REALLLLLLLLLLLLLLLLLLLLLLL\xavier_part\xavier_part\App_Data\product.mdf;Integrated Security=True");
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
             decimal discountedtotal;
             decimal grandtotal;
             knn.Open();
@@ -30,7 +37,7 @@ namespace xavier_part
             {
                 if (row.Field<decimal>("discountedtotal").ToString() == "0.00")
                 {
-                    Labelgg.Text = "Grand Total:$ "+row.Field<decimal>("grandtotal").ToString();
+                    Labelgg.Text =row.Field<decimal>("grandtotal").ToString();
                     Labelorderii.Text = row.Field<string>("orderid").ToString();
                     lbldelop.Text= "Delivery Option: " + row.Field<string>("deliveryoption").ToString();
                     lbldeldate.Text = "Delivery Date: "+row.Field<DateTime>("deliverydate").ToString();
@@ -40,7 +47,7 @@ namespace xavier_part
                 if (row.Field<decimal>("discountedtotal") > Convert.ToDecimal(0.00))
                 {
                     Labelorderii.Text = row.Field<string>("orderid").ToString();
-                    Labelgg.Text = "Grand Total:$ " + row.Field<decimal>("grandtotal").ToString();
+                    Labelgg.Text =row.Field<decimal>("grandtotal").ToString();
                     Labeldisc.Text = "Discount Total:$ " + row.Field<decimal>("discountedtotal").ToString();
                     lbldelop.Text = "Delivery Option: "+row.Field<string>("deliveryoption").ToString();
                     lbldeldate.Text = "Delivery Date: "+row.Field<DateTime>("deliverydate").ToString();
@@ -48,7 +55,32 @@ namespace xavier_part
                 }
 
             }
+            StripeConfiguration.ApiKey = "sk_test_51KHh6JKpf4tgYB9Ke4eDF1XVljQDR71m6WZ4570lLYBVO2Hyn1MT1YcmjfiUgOgDXWyFIH9eAfnWkzfWeU97CTuy00js5wzoZj";
 
+            var options = new SessionCreateOptions
+            {
+                SuccessUrl = "https://localhost:44371/success.html",
+                CancelUrl = "https://localhost:8080/cancel",
+                PaymentMethodTypes = new List<string>
+                {
+                    "card",
+                },
+                LineItems = new List<SessionLineItemOptions>
+                  {
+                    new SessionLineItemOptions
+                    {
+                        Name="Please Pay",
+
+                      Amount= Convert.ToInt64(Decimal.Parse(Labelgg.Text)*100) ,
+                     Currency="sgd",
+                      Quantity=1,
+                    },
+                  },
+                Mode = "payment",
+            };
+            var service = new SessionService();
+            Session session = service.Create(options);
+            sessionId = session.Id; 
             knn.Close();
 
             

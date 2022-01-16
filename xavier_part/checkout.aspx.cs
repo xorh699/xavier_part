@@ -282,7 +282,7 @@ namespace xavier_part
             
 
                 string mycon = ConfigurationManager.ConnectionStrings["product.mdf"].ConnectionString;
-                String myquery = "Select * from Coupondetails where couponcode='" + tb_discountcode0.Text + "'";
+                String myquery = "Select * from Coupons where coupon_Name='" + tb_discountcode0.Text + "'";
                 SqlConnection con = new SqlConnection(mycon);
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = myquery;
@@ -307,8 +307,8 @@ namespace xavier_part
                     decimal gst = Math.Round(Convert.ToDecimal(gtotal) * Convert.ToDecimal(0.07), 2);
                     decimal Grandtotal = Math.Round(Convert.ToDecimal(gtotal) + Convert.ToDecimal(gst), 2);
                   
-                    discount = int.Parse(ds.Tables[0].Rows[0]["discount"].ToString());
-                    finalprice = Grandtotal - discount;
+                    discount = int.Parse(ds.Tables[0].Rows[0]["coup_disccountamt"].ToString());
+                    finalprice = Grandtotal * (1- discount);
                     Labelgrandtotal.Text= Grandtotal.ToString();
                     lbl_discountedprice.Text =   finalprice.ToString();
 
