@@ -243,7 +243,7 @@ namespace xavier_part
                 gtotal = gtotal + decimal.Parse(dt.Rows[i]["total"].ToString());
                 i = i + 1;
             }
-            decimal gst = Convert.ToDecimal(gtotal) *Convert.ToDecimal(0.07) ;
+            decimal gst = Math.Round(Convert.ToDecimal(gtotal) *Convert.ToDecimal(0.07),2) ;
             return gst;
         }
         public decimal grandtotall()
@@ -275,7 +275,7 @@ namespace xavier_part
         protected void Button1_Click(object sender, EventArgs e)
         {
             
-                int discount;
+                decimal discount;
                 decimal finalprice;
                
                
@@ -307,8 +307,8 @@ namespace xavier_part
                     decimal gst = Math.Round(Convert.ToDecimal(gtotal) * Convert.ToDecimal(0.07), 2);
                     decimal Grandtotal = Math.Round(Convert.ToDecimal(gtotal) + Convert.ToDecimal(gst), 2);
                   
-                    discount = int.Parse(ds.Tables[0].Rows[0]["coup_disccountamt"].ToString());
-                    finalprice = Grandtotal * (1- discount);
+                    discount = decimal.Parse(ds.Tables[0].Rows[0]["coup_discountamt"].ToString());
+                    finalprice = Math.Round(Grandtotal * (1- discount));
                     Labelgrandtotal.Text= Grandtotal.ToString();
                     lbl_discountedprice.Text =   finalprice.ToString();
 

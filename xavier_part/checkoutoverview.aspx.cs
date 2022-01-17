@@ -59,7 +59,7 @@ namespace xavier_part
 
             var options = new SessionCreateOptions
             {
-                SuccessUrl = "https://localhost:44371/success.html",
+                SuccessUrl = "https://localhost:44371/success.aspx",
                 CancelUrl = "https://localhost:8080/cancel",
                 PaymentMethodTypes = new List<string>
                 {

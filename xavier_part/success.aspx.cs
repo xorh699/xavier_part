@@ -13,5 +13,10 @@ namespace xavier_part
         {
 
         }
+
+        protected void Button_shopnow_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("home.aspx");
+        }
     }
 }

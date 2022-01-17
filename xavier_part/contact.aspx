@@ -5,7 +5,7 @@
       <link href="css/contact.css" rel="stylesheet" />
     <div class="contactUs">
         <div class="title">
-            <h2>Get in Touch</h2>
+            <h1 style="color:black; font-size:50px; padding:50px;">Get in Touch</h1>
             <asp:Label ID="lbl_confirm" runat="server" Font-Size="Large" ForeColor="Green"></asp:Label>
         </div>
         <div class="box">
