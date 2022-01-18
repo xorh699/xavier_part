@@ -7,18 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace xavier_part
 {
-    public partial class success : System.Web.UI.Page
+    public partial class Vieworder : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
-        }
-
-        protected void Button_hm_Click(object sender, EventArgs e)
-        {
-            Session.Clear();
-            Response.Redirect("home.aspx");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace xavier_part
 {
     public partial class checkoutoverview : System.Web.UI.Page
     {
-        public string sessionId = "";
+        public string sessionIds = "";
 
         SqlConnection knn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\Documents\REALLLLLLLLLLLLLLLLLLLLLLL\xavier_part\xavier_part\App_Data\product.mdf;Integrated Security=True");
         protected void Page_Load(object sender, EventArgs e)
@@ -55,11 +55,13 @@ namespace xavier_part
                 }
 
             }
+        
             StripeConfiguration.ApiKey = "sk_test_51KHh6JKpf4tgYB9Ke4eDF1XVljQDR71m6WZ4570lLYBVO2Hyn1MT1YcmjfiUgOgDXWyFIH9eAfnWkzfWeU97CTuy00js5wzoZj";
 
             var options = new SessionCreateOptions
             {
-                SuccessUrl = "https://localhost:44371/success.aspx",
+                
+                SuccessUrl = "https://localhost:44371/success.aspx" ,
                 CancelUrl = "https://localhost:8080/cancel",
                 PaymentMethodTypes = new List<string>
                 {
@@ -80,9 +82,9 @@ namespace xavier_part
             };
             var service = new SessionService();
             Session session = service.Create(options);
-            sessionId = session.Id; 
+            sessionIds = session.Id; 
             knn.Close();
-
+           
             
         }
 

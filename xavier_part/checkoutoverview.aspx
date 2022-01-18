@@ -116,7 +116,7 @@
                          form.addEventListener('submit', function (e){
                              e.preventDefault();
 
-                             stripe.redirectToCheckout({ sessionId: "<%=sessionId%>" });
+                             stripe.redirectToCheckout({ sessionId: "<%=sessionIds%>" });
                          })
                      </script>
   

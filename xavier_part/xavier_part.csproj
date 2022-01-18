@@ -119,6 +119,7 @@
     <Content Include="success.aspx" />
     <Content Include="success.html" />
     <Content Include="ViewCart.aspx" />
+    <Content Include="Vieworder.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +197,13 @@
     </Compile>
     <Compile Include="ViewCart.aspx.designer.cs">
       <DependentUpon>ViewCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vieworder.aspx.cs">
+      <DependentUpon>Vieworder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vieworder.aspx.designer.cs">
+      <DependentUpon>Vieworder.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

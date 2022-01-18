@@ -14,9 +14,9 @@ namespace xavier_part
         static Boolean availabledesignid = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-
             try
             {
+
                 if (Session["addproduct"].ToString() == "true")
                 {
                     Session["addproduct"] = "false";
@@ -42,7 +42,9 @@ namespace xavier_part
                             cmd.Connection = scon;
                             SqlDataAdapter da = new SqlDataAdapter();
                             da.SelectCommand = cmd;
+
                             DataSet ds = new DataSet();
+
                             da.Fill(ds);
                             dr["images"] = ds.Tables[0].Rows[0]["Product_Image"].ToString();
                             dr["Product_ID"] = ds.Tables[0].Rows[0]["Product_ID"].ToString();
@@ -60,7 +62,7 @@ namespace xavier_part
                             Session["buyitems"] = dt;
                             GridView1.FooterRow.Cells[6].Text = "SubTotal";
                             GridView1.FooterRow.Cells[7].Text = grandtotal().ToString();
-                            
+
                         }
                         else
                         {
@@ -109,7 +111,7 @@ namespace xavier_part
                                 Session["buyitems"] = dt;
                                 GridView1.FooterRow.Cells[6].Text = "SubTotal";
                                 GridView1.FooterRow.Cells[7].Text = grandtotal().ToString();
-                                
+
                             }
                         }
                     }
@@ -121,28 +123,29 @@ namespace xavier_part
                     dt = (DataTable)Session["buyitems"];
                     GridView1.DataSource = dt;
                     GridView1.DataBind();
-                    if(GridView1.Rows.Count > 0)
+                    if (GridView1.Rows.Count > 0)
                     {
                         GridView1.FooterRow.Cells[6].Text = "SubTotal";
                         GridView1.FooterRow.Cells[7].Text = grandtotal().ToString();
                     }
-                   
+
                 }
             }
             catch
             {
 
             }
+           
         }
          private void checkdesignid()
         {
             DataTable dt1;
             int Product_ID;
-            int queryproductid = Convert.ToInt16(Request.QueryString["id"]);
+            int queryproductid = int.Parse(Request.QueryString["id"]);
             dt1 = (DataTable)Session["buyitems"];
             foreach (DataRow row in dt1.Rows)
             {
-                Product_ID = Convert.ToInt16(row["Product_ID"].ToString());
+                Product_ID = int.Parse(row["Product_ID"].ToString());
                 if ( Product_ID== queryproductid)
                 {
                     availabledesignid = true;
@@ -153,14 +156,14 @@ namespace xavier_part
         {
             DataTable dt1;
             int Product_ID;
-            int queryproductid = Convert.ToInt16(Request.QueryString["id"]);
+            int queryproductid = int.Parse(Request.QueryString["id"]);
             dt1 = (DataTable)Session["buyitems"];
             foreach (DataRow row in dt1.Rows)
             {
-                Product_ID = Convert.ToInt16(row["Product_ID"].ToString());
+                Product_ID = int.Parse(row["Product_ID"].ToString());
                 if (Product_ID == queryproductid)
                 {
-                    int newquantity = Convert.ToInt16(row["quantity"].ToString()) + Convert.ToInt16(Request.QueryString["quantity"].ToString());
+                    int newquantity = int.Parse(row["quantity"].ToString()) + int.Parse(Request.QueryString["quantity"].ToString());
                     row["quantity"] = newquantity;
                     decimal price = decimal.Parse(row["Unit_Price"].ToString());
                     decimal totalprice = price * newquantity;
