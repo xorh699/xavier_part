@@ -341,8 +341,8 @@ namespace xavier_part
 
             for (int i = 0; i <= dt.Rows.Count -1; i++)
             {
-                string updatepass = "insert into orderdetails(orderid,Product_ID,Product_Name,price,quantity,deliveryoption,deliverydate,grandtotal,discountedtotal)"
-                    + "values(@orderid,@product_id,@product_name,@price,@quantity,@deliveryoption,@deliverydate,@grandtotal,@discountedtotal)";
+                string updatepass = "insert into orderdetails(orderid,Product_ID,Product_Name,price,quantity,deliveryoption,deliverydate,grandtotal,discountedtotal,OrderStatus,Cust_ID)"
+                    + "values(@orderid,@product_id,@product_name,@price,@quantity,@deliveryoption,@deliverydate,@grandtotal,@discountedtotal,@OrderStatus,@Cust_ID)";
                 string mycon = ConfigurationManager.ConnectionStrings["product.mdf"].ConnectionString;
                
                 SqlConnection conn = new SqlConnection(mycon);
@@ -357,6 +357,8 @@ namespace xavier_part
                 cmd.Parameters.AddWithValue("@deliveryoption", DropDownList1.Text);
                 cmd.Parameters.AddWithValue("@deliverydate", Calendar2.SelectedDate);
                 cmd.Parameters.AddWithValue("@grandtotal", Convert.ToDecimal(Labelgrandtotal.Text));
+                cmd.Parameters.AddWithValue("@OrderStatus", "Pending");
+                cmd.Parameters.AddWithValue("@Cust_ID","Guest");
                 if (lbl_discountedprice.Text == string.Empty)
                 {
                     cmd.Parameters.AddWithValue("@discountedtotal", Convert.ToDecimal(0.00));

@@ -103,6 +103,7 @@
     <Content Include="css\shoppingcart.css" />
     <Content Include="css\successpage.css" />
     <Content Include="EditOrder.aspx" />
+    <Content Include="EduVideoInsert.aspx" />
     <Content Include="home.aspx" />
     <Content Include="images\candles.jfif" />
     <Content Include="images\d608fe5e-d2e4-46ff-8880-46d2af3fba40.JPG" />
@@ -115,6 +116,7 @@
     <Content Include="images\NoImage.png" />
     <Content Include="images\wangsheng.jfif" />
     <Content Include="payment.aspx" />
+    <Content Include="ProductCustomization.aspx" />
     <Content Include="product_desc.aspx" />
     <Content Include="success.aspx" />
     <Content Include="success.html" />
@@ -159,6 +161,13 @@
     <Compile Include="EditOrder.aspx.designer.cs">
       <DependentUpon>EditOrder.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EduVideoInsert.aspx.cs">
+      <DependentUpon>EduVideoInsert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EduVideoInsert.aspx.designer.cs">
+      <DependentUpon>EduVideoInsert.aspx</DependentUpon>
+    </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -174,6 +183,14 @@
       <DependentUpon>payment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Product.cs" />
+    <Compile Include="ProductCust.cs" />
+    <Compile Include="ProductCustomization.aspx.cs">
+      <DependentUpon>ProductCustomization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductCustomization.aspx.designer.cs">
+      <DependentUpon>ProductCustomization.aspx</DependentUpon>
+    </Compile>
     <Compile Include="product_desc.aspx.cs">
       <DependentUpon>product_desc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -215,6 +232,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EducationalVideos\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
